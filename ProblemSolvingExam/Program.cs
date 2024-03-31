@@ -326,6 +326,32 @@ namespace ProblemSolvingExam
             return s.Distinct().Count();
         }
 
+
+        // Метод divisibleSumPairs считает количество пар чисел в массиве, сумма которых делится на k.
+        public static int divisibleSumPairs(int n, int k, List<int> ar)
+        {
+            // Инициализируем переменную pairsCount для хранения количества подходящих пар и устанавливаем ее равной 0.
+            int pairsCount = 0;
+
+            // Внешний цикл проходит по элементам массива от 0 до n - 1.
+            for (int i = 0; i < ar.Count; i++)
+            {
+                // Внутренний цикл проходит по элементам массива до текущего индекса i.
+                for (int j = 0; j < i; j++)
+                {
+                    // Если сумма элементов ar[i] и ar[j] делится на k без остатка, увеличиваем счетчик pairsCount на 1.
+                    if ((ar[i] + ar[j]) % k == 0)
+                    {
+                        pairsCount++;
+                    }
+                }
+            }
+
+            // Возвращаем количество подходящих пар.
+            return pairsCount;
+        }
+
+
     }
     internal class Program
     {
