@@ -427,7 +427,8 @@ namespace ProblemSolvingExam
     {
         static void Main()
         {
-            Console.WriteLine(ProblemSolving.stringConstruction("aabcd"));
+            Console.WriteLine(ProblemSolving.viralAdvertising(5));
+            Console.ReadLine();
         }
     }
 }
