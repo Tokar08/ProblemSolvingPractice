@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -469,12 +470,54 @@ namespace ProblemSolvingExam
         }
 
 
+        // Метод anagram определяет минимальное количество символов, которые нужно изменить,
+        // чтобы сделать две подстроки строки s анаграммами друг друга.
+        // Если длина строки s нечетная, метод возвращает -1, так как строку невозможно разделить на две равные части.
+        // Иначе метод возвращает количество символов, которые нужно изменить.
+        public static int anagram(string s)
+        {
+            // Проверяем, что длина строки s четная.
+            if (s.Length % 2 != 0)
+                return -1;
+
+            // Инициализируем переменную для подсчета изменений.
+            int changesCount = 0;
+
+            // Разделяем строку s на две равные части: первую и вторую.
+            string firstPart = s.Substring(0, s.Length / 2);
+            string secondPart = s.Substring(s.Length / 2);
+
+            // Для каждой буквы в первой части строки firstPart проверяем, содержится ли она во второй части secondPart.
+            // Если содержится, удаляем эту букву из второй части.
+            // Если не содержится, увеличиваем счетчик changesCount на 1.
+            foreach (char letter in firstPart)
+            {
+                // Ищем индекс текущей буквы во второй части строки secondPart.
+                int index = secondPart.IndexOf(letter);
+
+                // Если буква найдена во второй части строки, удаляем ее.
+                if (index != -1)
+                {
+                    secondPart = secondPart.Remove(index, 1);
+                }
+                // Если буква не найдена, увеличиваем счетчик изменений.
+                else
+                {
+                    changesCount++;
+                }
+            }
+
+            // Возвращаем количество символов, которые нужно изменить.
+            return changesCount;
+        }
+
+
     }
     internal class Program
     {
         static void Main()
         {
-            Console.WriteLine(ProblemSolving.viralAdvertising(5));
+            Console.WriteLine(ProblemSolving.anagram("aaabbb"));
             Console.ReadLine();
         }
     }
