@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using System.Numerics;
 namespace ProblemSolvingExam
 {
     class ProblemSolving
@@ -545,6 +545,34 @@ namespace ProblemSolvingExam
             {
                 return -1;
             }
+        }
+
+
+        // Этот метод вычисляет факториал заданного целого числа и выводит его значение.
+        // В качестве параметра он принимает целое число n.
+        public static void extraLongFactorials(int n)
+        {
+            // Инициализируем переменную num значением 1, так как умножение на 1 не изменит результат.
+            BigInteger num = 1;
+
+            // Выполняем цикл, пока n больше 1, потому что факториал 0 и 1 равен 1, и дальнейшее умножение будет бесполезным.
+            while (n > 1)
+            {
+                // Умножаем текущее значение num на значение n и сохраняем результат в num.
+                num *= n;
+
+                // Уменьшаем значение n на 1 для перехода к следующему числу в последовательности.
+                n--;
+            }
+
+            //Второй вариант цикла(через for)
+            //for (int i = n; i > 1; i--)
+            //{
+            //    num *= i;
+            //}
+
+            // Выводим вычисленное значение факториала.
+            Console.WriteLine(num);
         }
 
     }
