@@ -575,12 +575,42 @@ namespace ProblemSolvingExam
             Console.WriteLine(num);
         }
 
+
+        // Метод findDigits вычисляет количество цифр в числе, которые делят само число.
+        public static int findDigits(int n)
+        {
+            // Инициализируем переменную count, которая будет хранить количество цифр, делящих число n.
+            int count = 0;
+
+            // Преобразуем число n в строку для удобства обращения к его цифрам.
+            string nStr = n.ToString();
+
+            // Перебираем все цифры числа n.
+            for (int i = 0; i < nStr.Count(); i++)
+            {
+                // Получаем текущую цифру числа n.
+                // Для получения числового значения текущего символа вычитаем код символа '0' из кода текущего символа.
+                // Например, символ '5' имеет код ASCII 53, а символ '0' - 48. 
+                // Путем вычитания получаем числовое значение 5.
+                int digit = nStr[i] - '0';
+
+                // Проверяем, не является ли текущая цифра нулем
+                // и делится ли само число n на эту цифру без остатка.
+                // Если условие выполняется, увеличиваем счетчик на 1.
+                if (digit != 0 && n % digit == 0)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
     internal class Program
     {
         static void Main()
         {
-            Console.WriteLine(ProblemSolving.anagram("aaabbb"));
+            Console.WriteLine(ProblemSolving.findDigits(123));
             Console.ReadLine();
         }
     }
