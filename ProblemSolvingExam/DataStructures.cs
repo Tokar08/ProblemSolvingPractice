@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System;
+
 
 namespace ProblemSolvingExam
 {
@@ -18,7 +16,8 @@ namespace ProblemSolvingExam
             }
             return reverseArr;
         }
-
+        // Метод rotateLeft сдвигает каждый элемент массива на 1 единицу влево.
+        // Учитывая целое число d, нужно повернуть массив.
         public static List<int> rotateLeft(int d, List<int> arr)
         {
             for (int i = 0; i < d; i++)
@@ -28,5 +27,7 @@ namespace ProblemSolvingExam
             }
             return arr;
         }
+
+       
     }
 }
